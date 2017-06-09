@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("IllumiWifiConnector")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("API implemantation for Illumi WiFi")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mechatronika.net")]
 [assembly: AssemblyProduct("IllumiWifiConnector")]

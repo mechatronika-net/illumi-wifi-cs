@@ -3,16 +3,20 @@
 namespace IllumiWifiConnector
 {
     /// <summary>
-    /// 
+    /// Illumi WiFi API implementation class
     /// </summary>
     public class IllumiWifiConnection
     {
         private readonly UdpConnection _udp;
+
         /// <summary>
-        /// 
+        /// Current state of connection
         /// </summary>
         public bool Connected { get; private set; }
 
+        /// <summary>
+        /// Constructor for IllumiWifiConnection
+        /// </summary>
         public IllumiWifiConnection()
         {
             _udp = new UdpConnection();
