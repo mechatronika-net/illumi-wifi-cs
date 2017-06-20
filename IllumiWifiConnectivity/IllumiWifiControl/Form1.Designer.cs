@@ -47,8 +47,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnGetMac = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -208,11 +213,52 @@
             this.textBox1.Size = new System.Drawing.Size(636, 121);
             this.textBox1.TabIndex = 11;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.btnGetMac);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Location = new System.Drawing.Point(281, 13);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(367, 80);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Twoje illumi WiFi";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Adres MAC:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(75, 21);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "text";
+            // 
+            // btnGetMac
+            // 
+            this.btnGetMac.Location = new System.Drawing.Point(7, 45);
+            this.btnGetMac.Name = "btnGetMac";
+            this.btnGetMac.Size = new System.Drawing.Size(129, 23);
+            this.btnGetMac.TabIndex = 3;
+            this.btnGetMac.Text = "Pobierz adres MAC";
+            this.btnGetMac.UseVisualStyleBackColor = true;
+            this.btnGetMac.Click += new System.EventHandler(this.btnGetMac_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 426);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
@@ -222,6 +268,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,6 +295,10 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnGetMac;
     }
 }
 

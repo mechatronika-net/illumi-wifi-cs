@@ -11,15 +11,19 @@ namespace IllumiWifiControl
 
         private Color _rgb, _rgbDefault;
 
+        private string _mac;
+
         public Form1()
         {
             InitializeComponent();
             _illumiWifiConnection = new IllumiWifiConnection();
             _rgb = Color.Black;
             _rgbDefault = Color.Black;
+            _mac = string.Empty;
 
             pnlDefault.BackColor = _rgbDefault;
             pnlCurrent.BackColor = _rgb;
+            label6.Text = _mac;
         }
 
         private void btnGetColors_Click(object sender, EventArgs e)
@@ -99,6 +103,16 @@ namespace IllumiWifiControl
             {
                 ConsolePrint("Błąd podczas wysyłania bieżącego koloru.");
             }
+        }
+
+        private void btnGetMac_Click(object sender, EventArgs e)
+        {
+            var rv = _illumiWifiConnection.GetMacAddress(ref _mac);
+            if (!rv)
+            {
+                ConsolePrint("Błąd podczas pobierania adresu MAC.");
+            }
+            label6.Text = _mac;
         }
 
         private void ConsolePrint(string msg)

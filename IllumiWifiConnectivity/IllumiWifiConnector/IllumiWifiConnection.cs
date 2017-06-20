@@ -1,4 +1,6 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
+using System.Linq;
 
 namespace IllumiWifiConnector
 {
@@ -156,6 +158,37 @@ namespace IllumiWifiConnector
 
             rgbDefault = Color.FromArgb(r, g, b);
 
+            return true;
+        }
+
+        /// <summary>
+        /// Gets MAC address from illumi WiFi
+        /// </summary>
+        /// <param name="mac">Reference to variable that should hold MAC address</param>
+        /// <returns>Read attempt status</returns>
+        public bool GetMacAddress(ref string mac)
+        {
+            if (!Connected) return false;
+
+            var buf = new byte[1];
+
+            buf[0] = 0x81;
+
+            _udp.Send(buf, 1);
+            buf = null;
+
+            _udp.Receive(ref buf);
+
+            if (buf == null) return false;
+
+            var c = new char[buf.Length];
+            for (var i = 0; i < buf.Length; i++)
+            {
+                c[i] = Convert.ToChar(buf[i]);
+            }
+
+            mac = $"{c[6]}{c[7]}-{c[8]}{c[9]}-{c[10]}{c[11]}-{c[12]}{c[13]}-{c[14]}{c[15]}-{c[16]}{c[17]}";
+            mac = mac.ToUpper();
             return true;
         }
 
