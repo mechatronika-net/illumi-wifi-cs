@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Drawing;
-using System.Linq;
+using System.Collections.Generic;
 
-namespace IllumiWifiConnector
+namespace mechatronika_net.illumiwifi.led
 {
     /// <summary>
     /// Illumi WiFi API implementation class
     /// </summary>
-    public class IllumiWifiConnection
+    public class Connector
     {
         private readonly UdpConnection _udp;
 
@@ -19,7 +18,7 @@ namespace IllumiWifiConnector
         /// <summary>
         /// Constructor for IllumiWifiConnection
         /// </summary>
-        public IllumiWifiConnection()
+        public Connector()
         {
             _udp = new UdpConnection();
             Connected = false;
@@ -51,7 +50,7 @@ namespace IllumiWifiConnector
         /// <summary>
         /// Sets new current color
         /// </summary>
-        /// <param name="rgb">Color to set (System.Drawing.Color)</param>
+        /// <param name="rgb">Color to set</param>
         /// <returns>Set attempt status</returns>
         public bool SendColor(Color rgb)
         {
@@ -75,7 +74,7 @@ namespace IllumiWifiConnector
         /// <summary>
         /// Sets new current color with fade
         /// </summary>
-        /// <param name="rgb">Color to set (System.Drawing.Color)</param>
+        /// <param name="rgb">Color to set</param>
         /// <param name="fadeTime"></param>
         /// <returns>Set attempt status</returns>
         public bool SendFadeToColor(Color rgb, int fadeTime)
@@ -92,7 +91,7 @@ namespace IllumiWifiConnector
             buf[4] = (byte)(fadeTime / 0x100);
             buf[5] = (byte)(fadeTime % 0x100);
 
-            _udp.Send(buf, 6);
+            _udp.Send(buf, 7);
             buf = null;
 
             _udp.Receive(ref buf);
@@ -104,20 +103,21 @@ namespace IllumiWifiConnector
         /// <summary>
         /// Sets new default color
         /// </summary>
-        /// <param name="rgb">Color to set as default (System.Drawing.Color)</param>
+        /// <param name="rgb">Color to set as default</param>
         /// <returns>Set attempt status</returns>
         public bool SendDefaultColor(Color rgb)
         {
             if (!Connected) return false;
 
-            var buf = new byte[4];
+            var buf = new byte[5];
 
             buf[0] = 0x02;      //set default color
             buf[1] = rgb.R;
             buf[2] = rgb.G;
             buf[3] = rgb.B;
+            buf[4] = rgb.W;
 
-            _udp.Send(buf, 4);
+            _udp.Send(buf, 5);
             buf = null;
 
             _udp.Receive(ref buf);
@@ -128,12 +128,10 @@ namespace IllumiWifiConnector
         /// <summary>
         /// Gets colors from illumi WiFi
         /// </summary>
-        /// <param name="rgb">Reference to variable that should hold current color (System.Drawing.Color)</param>
-        /// <param name="rgbDefault">Reference to variable that should hold default color (System.Drawing.Color)</param>
-        /// <returns>Read attempt status</returns>
-        public bool GetColors(ref Color rgb, ref Color rgbDefault)
+        /// <returns>Dictionary containing currentColor and defaultColor, null in case of error</returns>
+        public IDictionary<string, Color> GetColors()
         {
-            if (!Connected) return false;
+            if (!Connected) return null;
 
             var buf = new byte[1];
 
@@ -144,31 +142,34 @@ namespace IllumiWifiConnector
 
             _udp.Receive(ref buf);
 
-            if (buf == null || buf.Length != 6) return false;
+            if (buf == null || buf.Length != 8) return null;
+
+            var d = new Dictionary<string, Color>();
 
             var r = buf[0];
             var g = buf[1];
             var b = buf[2];
+            var w = buf[3];
 
-            rgb = Color.FromArgb(r, g, b);
+            d.Add("currentColor", new Color(r, g, b, w));
 
-            r = buf[3];
-            g = buf[4];
-            b = buf[5];
+            r = buf[4];
+            g = buf[5];
+            b = buf[6];
+            w = buf[7];
 
-            rgbDefault = Color.FromArgb(r, g, b);
+            d.Add("defaultColor", new Color(r, g, b, w));
 
-            return true;
+            return d;
         }
 
         /// <summary>
-        /// Gets MAC address from illumi WiFi
+        /// Gets illumi WiFi info
         /// </summary>
-        /// <param name="mac">Reference to variable that should hold MAC address</param>
-        /// <returns>Read attempt status</returns>
-        public bool GetMacAddress(ref string mac)
+        /// <returns>Dictionary containing version and MAC address, null in case of error</returns>
+        public Dictionary<string, string> GetInfo()
         {
-            if (!Connected) return false;
+            if (!Connected) return null;
 
             var buf = new byte[1];
 
@@ -179,7 +180,9 @@ namespace IllumiWifiConnector
 
             _udp.Receive(ref buf);
 
-            if (buf == null) return false;
+            if (buf == null) return null;
+
+            var d = new Dictionary<string, string>();
 
             var c = new char[buf.Length];
             for (var i = 0; i < buf.Length; i++)
@@ -187,9 +190,14 @@ namespace IllumiWifiConnector
                 c[i] = Convert.ToChar(buf[i]);
             }
 
-            mac = $"{c[6]}{c[7]}-{c[8]}{c[9]}-{c[10]}{c[11]}-{c[12]}{c[13]}-{c[14]}{c[15]}-{c[16]}{c[17]}";
+            var version = $"{c[0]}{c[1]}{c[2]}{c[3]}{c[4]}{c[5]}";
+            version = version.ToUpper();
+            d.Add("version", version);
+
+            var mac = $"{c[6]}{c[7]}-{c[8]}{c[9]}-{c[10]}{c[11]}-{c[12]}{c[13]}-{c[14]}{c[15]}-{c[16]}{c[17]}";
             mac = mac.ToUpper();
-            return true;
+            d.Add("mac", mac);
+            return d;
         }
 
     }

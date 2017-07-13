@@ -7,7 +7,7 @@
     <ProjectGuid>{073327D7-9F97-448A-8923-767AF7BDE6A2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IllumiWifiConnector</RootNamespace>
+    <RootNamespace>mechatronika_net.illumiwifi.led</RootNamespace>
     <AssemblyName>IllumiWifiConnector</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -40,9 +40,12 @@
       <HintPath>..\packages\Common.Logging.Core.3.3.1\lib\net40\Common.Logging.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,7 +54,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IllumiWifiConnection.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="Connector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UdpConnection.cs" />
   </ItemGroup>

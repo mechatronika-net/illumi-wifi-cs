@@ -1,9 +1,9 @@
-﻿using Common.Logging;
-using System;
+﻿using System;
 using System.Net;
 using System.Net.Sockets;
+using Common.Logging;
 
-namespace IllumiWifiConnector
+namespace mechatronika_net.illumiwifi.led
 {
     internal sealed class UdpConnection
     {

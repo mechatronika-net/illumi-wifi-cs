@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace IllumiWifiControl
+namespace mechatronika_net.illumiwifi.examples
 {
     static class Program
     {

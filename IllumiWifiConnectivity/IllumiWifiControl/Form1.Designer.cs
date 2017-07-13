@@ -1,4 +1,4 @@
-﻿namespace IllumiWifiControl
+﻿namespace mechatronika_net.illumiwifi.examples
 {
     partial class Form1
     {
@@ -48,9 +48,11 @@
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.btnGetMac = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -68,16 +70,16 @@
             this.groupBox2.Controls.Add(this.btnSendCurrent);
             this.groupBox2.Controls.Add(this.btnSendDefault);
             this.groupBox2.Controls.Add(this.btnSendWithFade);
-            this.groupBox2.Location = new System.Drawing.Point(12, 99);
+            this.groupBox2.Location = new System.Drawing.Point(12, 142);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(636, 181);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Kolory";
+            this.groupBox2.Text = "Colors";
             // 
             // scrTime
             // 
-            this.scrTime.Location = new System.Drawing.Point(112, 151);
+            this.scrTime.Location = new System.Drawing.Point(112, 154);
             this.scrTime.Name = "scrTime";
             this.scrTime.Size = new System.Drawing.Size(510, 16);
             this.scrTime.TabIndex = 14;
@@ -88,9 +90,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 154);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(103, 13);
+            this.label4.Size = new System.Drawing.Size(80, 13);
             this.label4.TabIndex = 13;
-            this.label4.Text = "Czas przejścia barw:";
+            this.label4.Text = "Color fade time:";
             // 
             // label3
             // 
@@ -99,7 +101,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(196, 13);
             this.label3.TabIndex = 12;
-            this.label3.Text = "Kolor domyślny (po włączeniu illumiWiFi)";
+            this.label3.Text = "Default color (after turning on illumi WiFi)";
             // 
             // btnGetColors
             // 
@@ -107,7 +109,7 @@
             this.btnGetColors.Name = "btnGetColors";
             this.btnGetColors.Size = new System.Drawing.Size(210, 23);
             this.btnGetColors.TabIndex = 7;
-            this.btnGetColors.Text = "Pobierz kolory z illumiWiFi";
+            this.btnGetColors.Text = "Get colors from illumi WiFi";
             this.btnGetColors.UseVisualStyleBackColor = true;
             this.btnGetColors.Click += new System.EventHandler(this.btnGetColors_Click);
             // 
@@ -124,9 +126,9 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(248, 29);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.Size = new System.Drawing.Size(69, 13);
             this.label2.TabIndex = 10;
-            this.label2.Text = "Kolor bieżący";
+            this.label2.Text = "Current collor";
             // 
             // pnlCurrent
             // 
@@ -142,7 +144,7 @@
             this.btnSendCurrent.Name = "btnSendCurrent";
             this.btnSendCurrent.Size = new System.Drawing.Size(210, 23);
             this.btnSendCurrent.TabIndex = 0;
-            this.btnSendCurrent.Text = "Wyślij bieżący kolor";
+            this.btnSendCurrent.Text = "Send current color";
             this.btnSendCurrent.UseVisualStyleBackColor = true;
             this.btnSendCurrent.Click += new System.EventHandler(this.btnSendCurrent_Click);
             // 
@@ -152,7 +154,7 @@
             this.btnSendDefault.Name = "btnSendDefault";
             this.btnSendDefault.Size = new System.Drawing.Size(210, 23);
             this.btnSendDefault.TabIndex = 5;
-            this.btnSendDefault.Text = "Wyślij domyślny kolor";
+            this.btnSendDefault.Text = "Send default color";
             this.btnSendDefault.UseVisualStyleBackColor = true;
             this.btnSendDefault.Click += new System.EventHandler(this.btnSendDefault_Click);
             // 
@@ -162,7 +164,7 @@
             this.btnSendWithFade.Name = "btnSendWithFade";
             this.btnSendWithFade.Size = new System.Drawing.Size(210, 23);
             this.btnSendWithFade.TabIndex = 8;
-            this.btnSendWithFade.Text = "Wyślij bieżący kolor z przejściem barw";
+            this.btnSendWithFade.Text = "Send current color with fade";
             this.btnSendWithFade.UseVisualStyleBackColor = true;
             this.btnSendWithFade.Click += new System.EventHandler(this.btnSendWithFade_Click);
             // 
@@ -173,18 +175,18 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(262, 81);
+            this.groupBox1.Size = new System.Drawing.Size(262, 110);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Połączenie";
+            this.groupBox1.Text = "Connection";
             // 
             // btnConnection
             // 
-            this.btnConnection.Location = new System.Drawing.Point(9, 47);
+            this.btnConnection.Location = new System.Drawing.Point(9, 81);
             this.btnConnection.Name = "btnConnection";
             this.btnConnection.Size = new System.Drawing.Size(247, 23);
             this.btnConnection.TabIndex = 2;
-            this.btnConnection.Text = "Połącz";
+            this.btnConnection.Text = "Connect";
             this.btnConnection.UseVisualStyleBackColor = true;
             this.btnConnection.Click += new System.EventHandler(this.btnConnection_Click);
             // 
@@ -201,13 +203,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(134, 13);
+            this.label1.Size = new System.Drawing.Size(121, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Numer IP lub nazwa hosta:";
+            this.label1.Text = "IP address or hostname:";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 286);
+            this.textBox1.Location = new System.Drawing.Point(12, 359);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(636, 121);
@@ -215,49 +217,67 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.btnGetMac);
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Location = new System.Drawing.Point(281, 13);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(367, 80);
+            this.groupBox3.Size = new System.Drawing.Size(367, 109);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Twoje illumi WiFi";
+            this.groupBox3.Text = "Your illumi WiFi";
             // 
-            // label5
+            // label8
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 21);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Adres MAC:";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(78, 43);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(0, 13);
+            this.label8.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 43);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 13);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Version:";
+            // 
+            // btnGetMac
+            // 
+            this.btnGetMac.Location = new System.Drawing.Point(6, 80);
+            this.btnGetMac.Name = "btnGetMac";
+            this.btnGetMac.Size = new System.Drawing.Size(129, 23);
+            this.btnGetMac.TabIndex = 3;
+            this.btnGetMac.Text = "Get info";
+            this.btnGetMac.UseVisualStyleBackColor = true;
+            this.btnGetMac.Click += new System.EventHandler(this.btnGetMac_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(75, 21);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(24, 13);
+            this.label6.Size = new System.Drawing.Size(0, 13);
             this.label6.TabIndex = 2;
-            this.label6.Text = "text";
             // 
-            // btnGetMac
+            // label5
             // 
-            this.btnGetMac.Location = new System.Drawing.Point(7, 45);
-            this.btnGetMac.Name = "btnGetMac";
-            this.btnGetMac.Size = new System.Drawing.Size(129, 23);
-            this.btnGetMac.TabIndex = 3;
-            this.btnGetMac.Text = "Pobierz adres MAC";
-            this.btnGetMac.UseVisualStyleBackColor = true;
-            this.btnGetMac.Click += new System.EventHandler(this.btnGetMac_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "MAC address:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(666, 426);
+            this.ClientSize = new System.Drawing.Size(666, 492);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -299,6 +319,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnGetMac;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 
